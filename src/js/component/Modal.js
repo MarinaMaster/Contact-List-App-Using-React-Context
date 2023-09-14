@@ -6,6 +6,7 @@ export const Modal = props => {
 	const [state, setState] = useState({
 		//initialize state here
 	});
+
 	return (
 		<div className="modal" tabIndex="-1" role="dialog" style={{ display: props.show ? "inline-block" : "none" }}>
 			<div className="modal-dialog" role="document">
@@ -32,7 +33,10 @@ export const Modal = props => {
 						<button type="button" className="btn btn-primary">
 							Oh no!
 						</button>
-						<button type="button" className="btn btn-secondary" data-dismiss="modal">
+						<button 
+                        type="button" 
+                        className="btn btn-secondary" 
+                        data-dismiss="modal">
 							Do it!
 						</button>
 					</div>

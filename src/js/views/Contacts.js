@@ -8,12 +8,13 @@ import { Context } from "../store/appContext.js";
 export const Contacts = () => {
 	const [state, setState] = useState({
 		showModal: false
-	});	}
+	});	
 	const navigate = useNavigate();	
 	const {store,actions} = useContext(Context);
 	useEffect(()=>{
 		actions.getContacts();
 	},[]);
+
 	return (
 		<div className="container">
 			<div>
@@ -28,16 +29,13 @@ export const Contacts = () => {
 					<ContactCard 
 					key={contact.id}
 					contact={contact}
-					onEdit={()=> Navigate(`/contacts/${contact.id}`)}
+					onEdit={()=> navigate(`/contacts/${contact.id}`)}
 					onDelete={() => setState({showModal:true})}/>
 					))}
-						<ContactCard onDelete={() => setState({ showModal: true })} />
-						<ContactCard />
-						<ContactCard />
-						<ContactCard />
 					</ul>
 				</div>
 			</div>
 			<Modal show={state.showModal} onClose={() => setState({ showModal: false })} />
 		</div>
 	);
+					}
