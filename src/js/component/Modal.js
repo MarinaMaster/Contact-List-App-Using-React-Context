@@ -2,25 +2,23 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 
-export const Modal = (props) => {
-  const [state, setState] = useState({
-    //initialize state here
-  });
+export const Modal = ({ show, onClose, onConfirm }) => {
+  if (!show) return null;
 
   return (
     <div
       className="modal"
       tabIndex="-1"
       role="dialog"
-      style={{ display: props.show ? "inline-block" : "none" }}
+      style={{ display: show ? "inline-block" : "none" }}
     >
       <div className="modal-dialog" role="document">
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title">Are you sure?</h5>
-            {props.onClose ? (
+            {onClose ? (
               <button
-                onClick={() => props.onClose()}
+                onClick={() => onClose()}
                 type="button"
                 className="close"
                 data-dismiss="modal"
@@ -41,7 +39,7 @@ export const Modal = (props) => {
             </button>
 
             <button
-            onClick={() => deleteContact(Id)}
+              onClick={onConfirm}
               type="button"
               className="btn btn-secondary"
               data-dismiss="modal">
@@ -60,7 +58,8 @@ export const Modal = (props) => {
 Modal.propTypes = {
   history: PropTypes.object,
   onClose: PropTypes.func,
-  show: PropTypes.bool,
+  onConfirm: PropTypes.func,
+  show: PropTypes.bool
 };
 
 /**
@@ -68,6 +67,5 @@ Modal.propTypes = {
  * your component's properties
  **/
 Modal.defaultProps = {
-  show: false,
-  onClose: null,
+  show: false
 };

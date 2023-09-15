@@ -22,7 +22,10 @@ export const AddContact = () => {
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newContact),
+        body: JSON.stringify({
+          ...newContact,
+          agenda_slug: "my_super_agenda",
+        }),
       }
     );
     if (response.ok) {
@@ -58,7 +61,7 @@ export const AddContact = () => {
               className="form-control"
               placeholder="Full Name"
               //add
-              value={newContact.full_name}
+              value={newContact?.full_name || ""}
               onChange={(e) =>
                 setNewContact((previousNewContact) => {
                   return {
@@ -76,7 +79,7 @@ export const AddContact = () => {
               className="form-control"
               placeholder="Enter email"
               //add
-              value={newContact.email}
+              value={newContact?.email || ""}
               onChange={(e) =>
                 setNewContact((previousNewContact) => {
                   return {
@@ -94,7 +97,7 @@ export const AddContact = () => {
               className="form-control"
               placeholder="Enter phone"
               //add
-              value={newContact.phone}
+              value={newContact?.phone || ""}
               onChange={(e) =>
                 setNewContact((previousNewContact) => {
                   return {
@@ -111,7 +114,7 @@ export const AddContact = () => {
               type="text"
               className="form-control"
               placeholder="Enter address"
-              value={newContact.address}
+              value={newContact?.address || ""}
               onChange={(e) =>
                 setNewContact((previousNewContact) => {
                   return {

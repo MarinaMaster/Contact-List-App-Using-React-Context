@@ -51,7 +51,7 @@ export const Contacts = () => {
         //add delete-button
         onConfirm={async () => {
           const response = await fetch(
-            `https://playground.4geeks.com/apis/fake/contact/${contactToIdDelete}`,
+            `https://playground.4geeks.com/apis/fake/contact/${contactIdToDelete}`,
             {
               method: "DELETE",
               headers: { "Content-Type": "application/json" },
@@ -60,7 +60,8 @@ export const Contacts = () => {
           if (response.ok) {
             actions.getContacts();
           }
-          setDeleteContactModalVisibility(false);
+          console.log("false");
+          setContactIdToDelete(false);
         }}
       />
     </div>
